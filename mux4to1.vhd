@@ -14,7 +14,7 @@ end mux4to1;
 
 architecture structure of mux4to1 is
 
-component mux2to1NbitDataflow
+component mux2to1NbitD
   generic(N : integer := 32);
   port(i_A          : in std_logic_vector(N-1 downto 0);
        i_B	    : in std_logic_vector(N-1 downto 0);
@@ -25,7 +25,7 @@ end component;
 signal sY1, sY2     : std_logic_vector(N-1 downto 0); 
 
 begin
-  mux1: mux2to1NbitDataflow port map(i_w0,i_w1,i_s0,sY1);
-  mux2: mux2to1NbitDataflow port map(i_w2,i_w3,i_s0,sY2);
-  mux3: mux2to1NbitDataflow port map(sY1,sY2,i_s1,o_Y);
+  mux1: mux2to1NbitD port map(i_w0,i_w1,i_s0,sY1);
+  mux2: mux2to1NbitD port map(i_w2,i_w3,i_s0,sY2);
+  mux3: mux2to1NbitD port map(sY1,sY2,i_s1,o_Y);
 end structure;
