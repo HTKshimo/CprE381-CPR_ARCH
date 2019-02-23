@@ -79,7 +79,7 @@ component mux8to1
 end component;
 
 signal sAND, sOR, sXOR, sNOR, sShift,sAddSub  : std_logic_vector(N-1 downto 0);
-signal sOverflow,smy_xmy_or2  	: std_logic;
+signal sOverflow  	: std_logic;
 signal sPAD 		 	: std_logic_vector(N-1 downto 0) := x"00000000";
 
 begin 
