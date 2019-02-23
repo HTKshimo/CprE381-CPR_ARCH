@@ -24,7 +24,7 @@ generic(N : integer := 32);
        o_Y          : out std_logic_vector(N-1 downto 0));
 end component;
 
-component mux2to1NbitDataflow
+component mux2to1NbitD
   generic(N : integer := 32);
   port(i_A          : in std_logic_vector(N-1 downto 0);
        i_B	    : in std_logic_vector(N-1 downto 0);
@@ -37,5 +37,5 @@ signal sY1, sY2     : std_logic_vector(N-1 downto 0);
 begin
   mux1: mux4to1 port map(i_w0,i_w1,i_w2,i_w3,i_s0,i_s1,sY1);
   mux2: mux4to1 port map(i_w4,i_w5,i_w6,i_w7,i_s0,i_s1,sY2);
-  mux3: mux2to1NbitDataflow port map(sY1,sY2,i_s2,o_Y);
+  mux3: mux2to1NbitD port map(sY1,sY2,i_s2,o_Y);
 end structure;
