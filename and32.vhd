@@ -10,7 +10,7 @@ end and32;
 
 architecture structure of and32 is
 
-component my_and2
+component and2
   port(i_A          : in std_logic;
        i_B          : in std_logic;
        o_F          : out std_logic);
@@ -18,6 +18,6 @@ end component;
 
 begin
 G1: for i in 0 to N-1 generate
-  and_i: my_and2 port map(i_A(i),i_B(i),o_F(i));
+  and_i: and2 port map(i_A(i),i_B(i),o_F(i));
 end generate;
 end structure;
