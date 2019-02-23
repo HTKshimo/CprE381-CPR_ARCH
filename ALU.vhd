@@ -25,7 +25,7 @@ component add_sub is
        Result	    : out std_logic_vector(N-1 downto 0));
 end component;
 
-component my_xor2
+component xor2
   port(i_A          : in std_logic;
        i_B          : in std_logic;
        o_F          : out std_logic);
@@ -84,7 +84,7 @@ signal sPAD 		 	: std_logic_vector(N-1 downto 0) := x"00000000";
 
 begin 
   addsub: add_sub port map(A,B,ALUOP(3),sOverflow,Zero,Carry,sAddSub);
-  xor_1: my_xor2 port map (sOverflow,sAddSub(31),sPAD(0));
+  xor_1: xor2 port map (sOverflow,sAddSub(31),sPAD(0));
   and_32: and32 port map(A,B,sAND);
   or_32: or32 port map(A,B,sOR);
   xor_32: xor32 port map(A,B,sXOR);
