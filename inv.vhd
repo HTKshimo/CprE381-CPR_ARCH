@@ -8,7 +8,7 @@ entity inv is
 
 end inv;
 
-architecture dataflow of my_inv is
+architecture dataflow of inv is
 begin
 
   output <= not input;
