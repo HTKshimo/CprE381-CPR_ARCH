@@ -12,6 +12,6 @@ end and2;
 architecture dataflow of and2 is
 begin
 
-  o_F <= i_A AND i_B;
+  o_F <=  i_A AND i_B;
   
 end dataflow;
