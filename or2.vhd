@@ -14,4 +14,4 @@ begin
 
   o_F <= i_A or i_B;
   
-end dataflow;
+end dataflow; 
