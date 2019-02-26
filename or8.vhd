@@ -10,7 +10,7 @@ architecture behavior of or8 is
 begin
   process
   begin
-    output <= i0 OR i1 OR i2 OR i3 OR i4 OR i5 OR i6 OR i7;
+    output <= i0 OR i1 OR i2  OR i3 OR i4 OR i5 OR i6 OR i7;
     wait for 100 ns;
   end process;
 end behavior;
