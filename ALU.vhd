@@ -62,9 +62,9 @@ end component;
 component shift32
   generic(N : integer := 32);
   port(dataIn              : in std_logic_vector(N-1 downto 0);
-       AorL                : in std_logic; --0 = Logical, 1 = Arithmetic
-       dir		   : in std_logic; --0 = left, 1 = right
-       sel	           : in std_logic_vector(4 downto 0);
+       AorL                : in std_logic; 
+       dir		   		   : in std_logic; 
+       sel	               : in std_logic_vector(4 downto 0);
        output          	   : out std_logic_vector(N-1 downto 0));
 end component;
 
@@ -78,8 +78,15 @@ component mux8to1
        o_Y          		: out std_logic_vector(N-1 downto 0));
 end component;
 
-signal sAND, sOR, sXOR, sNOR, sShift,sAddSub  : std_logic_vector(N-1 downto 0);
-signal sOverflow  	: std_logic;
+component Slt
+	generic(N : integer :=32);
+	port(A, B: in std_logic_vector(N-1 downto 0);
+			Result : out std_logic_vector(N-1 downto 0));
+		
+end component;
+
+signal sAND, sOR, sXOR, sNOR, sShift,sAddSub, sSlt  : std_logic_vector(N-1 downto 0);
+signal sOverflow 	: std_logic;
 signal sPAD 		 	: std_logic_vector(N-1 downto 0) := x"00000000";
 
 begin 
@@ -90,6 +97,7 @@ begin
   xor_32: xor32 port map(A,B,sXOR);
   nor_32: nor32 port map(A,B,sNOR);
   shift: shift32 port map(B,ALUOP(3),ALUOP(0),A(4 downto 0),sShift);
-  mux: mux8to1 port map(sPAD,sAddSub,sAND,sOR,sXOR,sNOR,sShift,sShift,ALUOP(0),ALUOP(1),ALUOP(2),Result);
+  Slt_1: Slt port map(A, B, sSlt);
+  mux: mux8to1 port map(sPAD,sAddSub,sAND,sOR,sXOR,sNOR,sSlt,sShift,ALUOP(0),ALUOP(1),ALUOP(2),Result);
   Overflow <=sOverflow;
 end structure;
